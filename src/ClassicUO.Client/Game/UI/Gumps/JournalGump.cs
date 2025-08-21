@@ -102,7 +102,7 @@ namespace ClassicUO.Game.UI.Gumps
             (
                 0x00D2,
                 0x00D3,
-                "System",
+                ResGumps.FilterSystem,
                 font,
                 0x0386,
                 false
@@ -117,7 +117,7 @@ namespace ClassicUO.Game.UI.Gumps
             (
                 0x00D2,
                 0x00D3,
-                "Objects",
+                ResGumps.FilterObjects,
                 font,
                 0x0386,
                 false
@@ -132,7 +132,7 @@ namespace ClassicUO.Game.UI.Gumps
             (
                 0x00D2,
                 0x00D3,
-                "Client",
+                ResGumps.FilterClient,
                 font,
                 0x0386,
                 false
@@ -147,7 +147,7 @@ namespace ClassicUO.Game.UI.Gumps
             (
                 0x00D2,
                 0x00D3,
-                "Guild",
+                ResGumps.FilterGuild,
                 font,
                 0x0386,
                 false
