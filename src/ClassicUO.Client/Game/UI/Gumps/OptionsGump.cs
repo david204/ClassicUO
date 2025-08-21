@@ -121,7 +121,7 @@ namespace ClassicUO.Game.UI.Gumps
         private Checkbox _showHouseContent;
         private Checkbox _showInfoBar;
         private Checkbox _ignoreAllianceMessages;
-        private Checkbox _ignoreGuildMessages, _useAlternateJournal, _partyMessagesOverhead;
+        private Checkbox _ignoreGuildMessages, _useAlternateJournal, _partyMessagesOverhead, _translateMessages;
 
         // general
         private HSliderBar _sliderFPS, _circleOfTranspRadius;
@@ -2504,6 +2504,17 @@ namespace ClassicUO.Game.UI.Gumps
 
             startY += _ignoreAllianceMessages.Height + 2;
 
+            _translateMessages = AddCheckBox
+            (
+                rightArea,
+                "Translate messages to Spanish",
+                _currentProfile.TranslateIncomingMessages,
+                startX,
+                startY
+            );
+
+            startY += _translateMessages.Height + 2;
+
             _useAlternateJournal = AddCheckBox
             (
                 rightArea,
@@ -4001,6 +4012,7 @@ namespace ClassicUO.Game.UI.Gumps
             _currentProfile.HideChatGradient = _hideChatGradient.IsChecked;
             _currentProfile.IgnoreGuildMessages = _ignoreGuildMessages.IsChecked;
             _currentProfile.IgnoreAllianceMessages = _ignoreAllianceMessages.IsChecked;
+            _currentProfile.TranslateIncomingMessages = _translateMessages.IsChecked;
             _currentProfile.UseAlternateJournal = _useAlternateJournal.IsChecked;
 
             // fonts

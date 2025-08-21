@@ -325,6 +325,11 @@ namespace ClassicUO.Game.UI.Gumps
                 _textEntries.Remove(lineToRemove);
             }
 
+            if (ProfileManager.CurrentProfile.TranslateIncomingMessages)
+            {
+                text = TranslationManager.Translate(text);
+            }
+
             _textEntries.AddLast(new ChatLineTime(text, font, isunicode, hue));
         }
 

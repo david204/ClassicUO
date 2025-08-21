@@ -279,6 +279,11 @@ namespace ClassicUO.Game.UI.Gumps
                 text = entry.Text;
             }
 
+            if (ProfileManager.CurrentProfile.TranslateIncomingMessages)
+            {
+                text = TranslationManager.Translate(text);
+            }
+
             _journalEntries.AddEntry
             (
                 text,
