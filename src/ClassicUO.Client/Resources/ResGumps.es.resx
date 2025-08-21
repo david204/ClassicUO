@@ -1188,7 +1188,7 @@
   <data name="Shadows" xml:space="preserve">
     
     
-    <value>Shadows</value>
+    <value>Sombras</value>
     
   
   </data>
@@ -2398,7 +2398,7 @@ Time left: {1:00}:{2:00}:{3:00}</value>
   <data name="Miscellaneous" xml:space="preserve">
     
     
-    <value>Miscellaneous</value>
+    <value>Misceláneo</value>
     
   
   </data>
@@ -2569,7 +2569,7 @@ Time left: {1:00}:{2:00}:{3:00}</value>
   <data name="Clear" xml:space="preserve">
     
     
-    <value>Clear</value>
+    <value>Limpiar</value>
     
   
   </data>
@@ -2641,7 +2641,7 @@ Time left: {1:00}:{2:00}:{3:00}</value>
   <data name="DarkMode" xml:space="preserve">
     
     
-    <value>Dark mode</value>
+    <value>Modo oscuro</value>
     
   
   </data>
@@ -2785,7 +2785,7 @@ Time left: {1:00}:{2:00}:{3:00}</value>
   <data name="Accept" xml:space="preserve">
     
     
-    <value>Accept</value>
+    <value>Aceptar</value>
     
   
   </data>
@@ -4770,42 +4770,42 @@ start your first counter</value>
   
 
   <data name="FilterSystem">
-    <value>System</value>
+    <value>Sistema</value>
   </data>
   <data name="FilterObjects">
-    <value>Objects</value>
+    <value>Objetos</value>
   </data>
   <data name="FilterClient">
-    <value>Client</value>
+    <value>Cliente</value>
   </data>
   <data name="FilterGuild">
-    <value>Guild</value>
+    <value>Gremio</value>
   </data>
   <data name="ScrollUp">
-    <value>Scroll Up</value>
+    <value>Desplazar arriba</value>
   </data>
   <data name="ScrollDown">
-    <value>Scroll Down</value>
+    <value>Desplazar abajo</value>
   </data>
   <data name="Mobiles">
-    <value>Mobiles</value>
+    <value>Móviles</value>
   </data>
   <data name="GumpsAndContext">
-    <value>Gumps &amp; Context</value>
+    <value>Gumps y contexto</value>
   </data>
   <data name="TerrainStatics">
-    <value>Terrain &amp; Statics</value>
+    <value>Terreno y estáticos</value>
   </data>
   <data name="GameWindow">
-    <value>Game window</value>
+    <value>Ventana de juego</value>
   </data>
   <data name="Zoom">
     <value>Zoom</value>
   </data>
   <data name="Lights">
-    <value>Lights</value>
+    <value>Luces</value>
   </data>
   <data name="Misc">
-    <value>Misc</value>
+    <value>Varios</value>
   </data>
 </root>
