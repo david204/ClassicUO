@@ -71,6 +71,7 @@ namespace ClassicUO.Configuration
         public bool IgnoreAllianceMessages { get; set; }
         public bool IgnoreGuildMessages { get; set; }
         public bool TranslateIncomingMessages { get; set; }
+        public string TranslationLanguage { get; set; } = "es";
 
         // hues
         public ushort SpeechHue { get; set; } = 0x02B2;

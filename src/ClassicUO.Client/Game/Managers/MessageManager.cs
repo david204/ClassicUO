@@ -279,6 +279,11 @@ namespace ClassicUO.Game.Managers
                 isunicode = ProfileManager.CurrentProfile.OverrideAllFontsIsUnicode;
             }
 
+            if (ProfileManager.CurrentProfile?.TranslateIncomingMessages == true)
+            {
+                msg = TranslationManager.Translate(msg);
+            }
+
             int width = isunicode ? Client.Game.UO.FileManager.Fonts.GetWidthUnicode(font, msg) : Client.Game.UO.FileManager.Fonts.GetWidthASCII(font, msg);
 
             if (width > 200)

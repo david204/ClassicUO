@@ -122,6 +122,8 @@ namespace ClassicUO.Game.UI.Gumps
         private Checkbox _showInfoBar;
         private Checkbox _ignoreAllianceMessages;
         private Checkbox _ignoreGuildMessages, _useAlternateJournal, _partyMessagesOverhead, _translateMessages;
+        private Combobox _translationLanguage;
+        private readonly string[] _languageCodes = { "en", "es", "fr", "de" };
 
         // general
         private HSliderBar _sliderFPS, _circleOfTranspRadius;
@@ -2507,13 +2509,25 @@ namespace ClassicUO.Game.UI.Gumps
             _translateMessages = AddCheckBox
             (
                 rightArea,
-                "Translate messages to Spanish",
+                "Translate incoming messages",
                 _currentProfile.TranslateIncomingMessages,
                 startX,
                 startY
             );
 
             startY += _translateMessages.Height + 2;
+
+            _translationLanguage = AddCombobox
+            (
+                rightArea,
+                new[] { "English", "Spanish", "French", "German" },
+                GetLanguageIndex(_currentProfile.TranslationLanguage),
+                startX,
+                startY,
+                150
+            );
+
+            startY += _translationLanguage.Height + 2;
 
             _useAlternateJournal = AddCheckBox
             (
@@ -4013,6 +4027,7 @@ namespace ClassicUO.Game.UI.Gumps
             _currentProfile.IgnoreGuildMessages = _ignoreGuildMessages.IsChecked;
             _currentProfile.IgnoreAllianceMessages = _ignoreAllianceMessages.IsChecked;
             _currentProfile.TranslateIncomingMessages = _translateMessages.IsChecked;
+            _currentProfile.TranslationLanguage = _languageCodes[_translationLanguage.SelectedIndex];
             _currentProfile.UseAlternateJournal = _useAlternateJournal.IsChecked;
 
             // fonts
@@ -4379,6 +4394,19 @@ namespace ClassicUO.Game.UI.Gumps
             area?.Add(box);
 
             return box;
+        }
+
+        private int GetLanguageIndex(string code)
+        {
+            for (int i = 0; i < _languageCodes.Length; i++)
+            {
+                if (_languageCodes[i].Equals(code, StringComparison.OrdinalIgnoreCase))
+                {
+                    return i;
+                }
+            }
+
+            return 0;
         }
 
         private Combobox AddCombobox

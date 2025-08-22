@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using ClassicUO.Game.Managers;
+using ClassicUO.Configuration;
 using ClassicUO.Input;
 using ClassicUO.Assets;
 using ClassicUO.Renderer;
@@ -735,6 +736,10 @@ namespace ClassicUO.Game.UI.Controls
                     {
                         text = text.Substring(0, _maxCharCount);
                     }
+                }
+                if (ProfileManager.CurrentProfile?.TranslateIncomingMessages == true && _fromServer)
+                {
+                    text = TranslationManager.Translate(text);
                 }
 
                 Stb.ClearState(!Multiline);
