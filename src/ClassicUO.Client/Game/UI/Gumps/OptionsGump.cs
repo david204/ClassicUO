@@ -117,7 +117,7 @@ namespace ClassicUO.Game.UI.Gumps
         private InputField _rows, _columns, _highlightAmount, _abbreviatedAmount;
 
         // speech
-        private Checkbox _scaleSpeechDelay, _saveJournalCheckBox;
+        private Checkbox _scaleSpeechDelay, _saveJournalCheckBox, _translateChatMessages;
         private Checkbox _showHouseContent;
         private Checkbox _showInfoBar;
         private Checkbox _ignoreAllianceMessages;
@@ -454,7 +454,7 @@ namespace ClassicUO.Game.UI.Gumps
             rightArea.Add(box);
 
 
-            SettingsSection section = AddSettingsSection(box, "General");
+            SettingsSection section = AddSettingsSection(box, ResGumps.General);
 
 
             section.Add
@@ -662,7 +662,7 @@ namespace ClassicUO.Game.UI.Gumps
             _use_smooth_boat_movement.IsVisible = Client.Game.UO.Version >= ClientVersion.CV_7090;
 
 
-            SettingsSection section2 = AddSettingsSection(box, "Mobiles");
+            SettingsSection section2 = AddSettingsSection(box, ResGumps.Mobiles);
             section2.Y = section.Bounds.Bottom + 40;
 
             section2.Add
@@ -884,7 +884,7 @@ namespace ClassicUO.Game.UI.Gumps
             section2.PopIndent();
             section2.PopIndent();
 
-            SettingsSection section3 = AddSettingsSection(box, "Gumps & Context");
+            SettingsSection section3 = AddSettingsSection(box, ResGumps.GumpsAndContext);
             section3.Y = section2.Bounds.Bottom + 40;
 
             section3.Add
@@ -1086,7 +1086,7 @@ namespace ClassicUO.Game.UI.Gumps
             );
 
 
-            SettingsSection section4 = AddSettingsSection(box, "Miscellaneous");
+            SettingsSection section4 = AddSettingsSection(box, ResGumps.Miscellaneous);
             section4.Y = section3.Bounds.Bottom + 40;
 
             section4.Add
@@ -1319,7 +1319,7 @@ namespace ClassicUO.Game.UI.Gumps
             };
 
 
-            SettingsSection section5 = AddSettingsSection(box, "Terrain & Statics");
+            SettingsSection section5 = AddSettingsSection(box, ResGumps.TerrainStatics);
             section5.Y = section4.Bounds.Bottom + 40;
 
             section5.Add
@@ -1567,7 +1567,7 @@ namespace ClassicUO.Game.UI.Gumps
             box.WantUpdateSize = true;
             rightArea.Add(box);
 
-            SettingsSection section = AddSettingsSection(box, "Game window");
+            SettingsSection section = AddSettingsSection(box, ResGumps.GameWindow);
 
             section.Add
             (
@@ -1686,7 +1686,7 @@ namespace ClassicUO.Game.UI.Gumps
             _gameWindowHeight.SetText(camera.Bounds.Height.ToString());
 
 
-            SettingsSection section2 = AddSettingsSection(box, "Zoom");
+            SettingsSection section2 = AddSettingsSection(box, ResGumps.Zoom);
             section2.Y = section.Bounds.Bottom + 40;
             section2.Add(AddLabel(null, ResGumps.DefaultZoom, startX, startY));
 
@@ -1732,7 +1732,7 @@ namespace ClassicUO.Game.UI.Gumps
             );
 
 
-            SettingsSection section3 = AddSettingsSection(box, "Lights");
+            SettingsSection section3 = AddSettingsSection(box, ResGumps.Lights);
             section3.Y = section2.Bounds.Bottom + 40;
 
             section3.Add
@@ -1813,7 +1813,7 @@ namespace ClassicUO.Game.UI.Gumps
             );
 
 
-            SettingsSection section4 = AddSettingsSection(box, "Misc");
+            SettingsSection section4 = AddSettingsSection(box, ResGumps.Misc);
             section4.Y = section3.Bounds.Bottom + 40;
 
             section4.Add
@@ -1877,7 +1877,7 @@ namespace ClassicUO.Game.UI.Gumps
             );
 
 
-            SettingsSection section5 = AddSettingsSection(box, "Shadows");
+            SettingsSection section5 = AddSettingsSection(box, ResGumps.Shadows);
             section5.Y = section4.Bounds.Bottom + 40;
 
             section5.Add
@@ -2430,6 +2430,17 @@ namespace ClassicUO.Game.UI.Gumps
             );
 
             startY += _saveJournalCheckBox.Height + 2;
+
+            _translateChatMessages = AddCheckBox
+            (
+                rightArea,
+                ResGumps.AutoTranslateMessages,
+                _currentProfile.TranslateChatMessages,
+                startX,
+                startY
+            );
+
+            startY += _translateChatMessages.Height + 2;
 
             if (!_currentProfile.SaveJournalToFile)
             {
@@ -3861,6 +3872,7 @@ namespace ClassicUO.Game.UI.Gumps
             _currentProfile.ActivateChatAdditionalButtons = _chatAdditionalButtonsCheckbox.IsChecked;
             _currentProfile.ActivateChatShiftEnterSupport = _chatShiftEnterCheckbox.IsChecked;
             _currentProfile.SaveJournalToFile = _saveJournalCheckBox.IsChecked;
+            _currentProfile.TranslateChatMessages = _translateChatMessages.IsChecked;
             _currentProfile.OverheadPartyMessages = _partyMessagesOverhead.IsChecked;
 
             // video

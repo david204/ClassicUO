@@ -120,6 +120,13 @@ namespace ClassicUO
 
             ReadSettingsFromArgs(args);
 
+            CultureInfo uiCulture =
+                Settings.GlobalSettings?.Language?.Equals("ESP", StringComparison.OrdinalIgnoreCase) == true
+                    ? new CultureInfo("es-ES")
+                    : CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = uiCulture;
+            CultureInfo.CurrentUICulture = uiCulture;
+
             // still invalid, cannot load settings
             if (Settings.GlobalSettings == null)
             {

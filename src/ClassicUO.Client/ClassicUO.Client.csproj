@@ -54,6 +54,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ResGumps.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\ResGumps.es.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResGumps.es.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +73,10 @@
     <EmbeddedResource Update="Resources\ResGumps.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ResGumps.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResGumps.es.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResGumps.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

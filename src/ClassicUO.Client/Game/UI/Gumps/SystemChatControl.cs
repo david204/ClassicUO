@@ -318,6 +318,8 @@ namespace ClassicUO.Game.UI.Gumps
 
         public void AddLine(string text, byte font, ushort hue, bool isunicode)
         {
+            text = TranslationManager.Translate(text);
+
             if (_textEntries.Count >= 30)
             {
                 LinkedListNode<ChatLineTime> lineToRemove = _textEntries.First;
