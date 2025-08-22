@@ -8,12 +8,29 @@ namespace ClassicUO.Game.Managers
 {
     internal static class TranslationManager
     {
-        private static readonly Dictionary<string, string> _dictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        private static readonly Dictionary<string, Dictionary<string, string>> _dictionary = new()
         {
-            {"hello", "hola"},
-            {"world", "mundo"},
-            {"yes", "sí"},
-            {"no", "no"}
+            ["es"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"hello", "hola"},
+                {"world", "mundo"},
+                {"yes", "sí"},
+                {"no", "no"}
+            },
+            ["fr"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"hello", "bonjour"},
+                {"world", "monde"},
+                {"yes", "oui"},
+                {"no", "non"}
+            },
+            ["de"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                {"hello", "hallo"},
+                {"world", "welt"},
+                {"yes", "ja"},
+                {"no", "nein"}
+            }
         };
 
         private static readonly HttpClient _http = new HttpClient();
@@ -25,8 +42,15 @@ namespace ClassicUO.Game.Managers
                 return text;
             }
 
+            string lang = ProfileManager.CurrentProfile?.TranslationLanguage ?? "es";
+
+            if (string.Equals(lang, "en", StringComparison.OrdinalIgnoreCase))
+            {
+                return text;
+            }
+
             // First try local dictionary
-            if (_dictionary.TryGetValue(text, out string translated))
+            if (_dictionary.TryGetValue(lang, out var langDict) && langDict.TryGetValue(text, out string translated))
             {
                 return translated;
             }
@@ -34,7 +58,7 @@ namespace ClassicUO.Game.Managers
             // Fallback to external API if possible
             try
             {
-                var url = $"https://api.mymemory.translated.net/get?q={Uri.EscapeDataString(text)}&langpair=en|es";
+                var url = $"https://api.mymemory.translated.net/get?q={Uri.EscapeDataString(text)}&langpair=auto|{lang}";
                 string json = _http.GetStringAsync(url).GetAwaiter().GetResult();
                 using JsonDocument doc = JsonDocument.Parse(json);
                 if (doc.RootElement.TryGetProperty("responseData", out JsonElement rd) &&

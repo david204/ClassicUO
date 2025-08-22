@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 using ClassicUO.Assets;
+using ClassicUO.Configuration;
+using ClassicUO.Game.Managers;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
 
@@ -52,6 +54,7 @@ namespace ClassicUO.Game.UI.Controls
             X = int.Parse(parts[1]);
             Y = int.Parse(parts[2]);
             IsFromServer = true;
+            Text = Text;
         }
 
         public string Text
@@ -59,6 +62,11 @@ namespace ClassicUO.Game.UI.Controls
             get => _gText.Text;
             set
             {
+                if (ProfileManager.CurrentProfile?.TranslateIncomingMessages == true && IsFromServer)
+                {
+                    value = TranslationManager.Translate(value);
+                }
+
                 _gText.Text = value;
                 Width = _gText.Width;
                 Height = _gText.Height;

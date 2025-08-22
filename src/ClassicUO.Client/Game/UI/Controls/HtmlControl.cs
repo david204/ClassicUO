@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using ClassicUO.Input;
 using ClassicUO.Assets;
+using ClassicUO.Configuration;
+using ClassicUO.Game.Managers;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
 using ClassicUO.Utility.Logging;
@@ -102,6 +104,11 @@ namespace ClassicUO.Game.UI.Controls
 
         private void InternalBuild(string text, int hue)
         {
+            if (IsFromServer && ProfileManager.CurrentProfile?.TranslateIncomingMessages == true)
+            {
+                text = TranslationManager.Translate(text);
+            }
+
             if (!string.IsNullOrEmpty(text))
             {
                 if (_gameText.IsHTML)

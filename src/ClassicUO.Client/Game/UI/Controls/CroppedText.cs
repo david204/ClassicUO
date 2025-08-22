@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: BSD-2-Clause
 
 using System.Collections.Generic;
+using ClassicUO.Configuration;
+using ClassicUO.Game.Managers;
 using ClassicUO.Renderer;
 using ClassicUO.Utility;
 
@@ -32,6 +34,11 @@ namespace ClassicUO.Game.UI.Controls
             Width = int.Parse(parts[3]);
             Height = int.Parse(parts[4]);
             IsFromServer = true;
+
+            if (ProfileManager.CurrentProfile?.TranslateIncomingMessages == true)
+            {
+                _gameText.Text = TranslationManager.Translate(_gameText.Text);
+            }
         }
 
         public override bool Draw(UltimaBatcher2D batcher, int x, int y)
